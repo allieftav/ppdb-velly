@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Promosi Sekolah Kita</title>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        nav {
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            gap: 1.5em;
+            padding: 1em 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #333;
+            text-decoration: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #bbb;
+        }
+
+        .running-text-container {
+            background-color: #eee;
+            padding: 0.5em 0;
+            overflow: hidden;
+        }
+
+        .running-text {
+            white-space: nowrap;
+            animation: berjalan 15s linear infinite;
+        }
+
+@keyframes berjalan {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+
+        .hero {
+            padding: 2em;
+            text-align: center;
+        }
+
+        .hero img {
+            max-width: 50%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .hero a.button {
+            display: inline-block;
+            margin-top: 1em;
+            padding: 0.75em 1.5em;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        .hero a.button:hover {
+            background-color: #218838;
+        }
+
+        .content {
+            padding: 2em;
+            text-align: center;
+        }
+
+        .content ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .content li {
+            margin-bottom: 0.5em;
+        }
+
+        .contact-info {
+            text-align: center;
+            padding: 2em 1em;
+            background-color: #eee;
+        }
+
+        .contact-info p {
+            margin: 0.5em 0;
+        }
+
+        .contact-info a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+
+        .program-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2em;
+            margin-top: 2em;
+        }
+
+        .program {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 1em;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: transform 0.3s ease;
+        }
+
+        .program img {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 8px;
+            margin-bottom: 1em;
+        }
+
+        .program img:hover {
+            transform: scale(1.05);
+        }
+
+        .program h3 {
+            margin: 0.5em 0;
+        }
+
+@media (min-width: 768px) {
+            .program-list {
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .program {
+                width: 45%;
+            }
+        }
+
+        .button, .cta-button {
+            display: inline-block;
+            padding: 0.75em 1.5em;
+            background-color: #25D366;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 1em;
+            text-align: center;
+        }
+
+        .button:hover, .cta-button:hover {
+            background-color: #1ebe5d;
+        }
+
+        form input, form select {
+            display: block;
+            width: 90%;
+            max-width: 400px;
+            margin: 1em auto;
+            padding: 0.75em;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        #struk {
+            display: none;
+            opacity: 0;
+            margin-top: 2em;
+            background: #fff;
+            padding: 1.5em;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            transition: opacity 0.5s ease;
+        }
+
+        #struk.show {
+            display: block;
+            opacity: 1;
+        }
+
+        #backToTop {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            padding: 0.7em;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.2em;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            display: none;
+            transition: background 0.3s;
+        }
+
+        #backToTop:hover {
+            background: #1ebe5d;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+        }
+
+        footer a {
+            color: #25D366;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Ekstrakurikuler Styles */
+        .extracurricular-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2em;
+            margin-top: 1em;
+        }
+
+        .extracurricular {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            width: 220px;
+            padding: 1em;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .extracurricular:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+        }
+
+        .extracurricular img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 0.5em;
+            object-fit: contain;
+        }
+
+        .extracurricular h3 {
+            margin: 0.5em 0;
+            font-size: 1.1em;
+        }
+
+        .extracurricular p {
+            font-size: 0.9em;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Selamat datang di Website</h1>
+        <h2>SMK Bina Informatika</h2>
+        <p>
+            Unggul dalam Prestasi, Berkarakter Islami
+        </p>
+    </header>
+
+    <nav>
+        <a href="#beranda">Beranda</a>
+        <a href="#tentang-kami">Tentang Kami</a>
+        <a href="#program-studi">Program Studi</a>
+        <a href="#ekstrakurikuler">Ekstrakurikuler</a>
+        <a href="#form-daftar">Pendaftaran</a>
+        <a href="#kontak">Kontak</a>
+        <a href="#lokasi">Lokasi</a>
+    </nav>
+
+    <div class="running-text-container">
+        <p class="running-text">
+            Pendaftaran Siswa Baru Tahun Ajaran 2025/2026 telah dibuka! Segera daftarkan diri Anda dan raih masa depan gemilang bersama kami! Beasiswa tersedia untuk siswa berprestasi. Jangan lewatkan kesempatan ini!
+        </p>
+    </div>
+
+    <div class="hero" id="beranda" data-aos="fade-up">
+        <img src="logo bifor.jpg" alt="Foto Kegiatan Sekolah">
+        <h2>Sekolah Kejuruan dengan Fasilitas Modern</h2>
+        <p>
+            Kami menyediakan lingkungan belajar yang kondusif dan fasilitas lengkap untuk mendukung perkembangan potensi siswa.
+        </p>
+        <h2>Mengapa Memilih Sekolah Kami?</h2>
+        <ul>
+            <li>Tenaga pengajar profesional dan berpengalaman.</li>
+            <li>Kurikulum yang relevan dengan perkembangan zaman.</li>
+            <li>Kegiatan ekstrakurikuler yang beragam.</li>
+            <li>Lingkungan sekolah yang aman dan nyaman.</li>
+        </ul>
+        <p>
+            <strong>Gratis DSP untuk 100 pendaftar pertama!</strong>
+        </p>
+        <a href="#form-daftar" class="button">Daftar Sekarang!</a>
+    </div>
+
+    <div class="content" id="tentang-kami" data-aos="fade-right">
+        <h2>Tentang Kami</h2>
+        <p>
+            SMK Bina Informatika merupakan lembaga pendidikan yang berkomitmen pada pengembangan ilmu pengetahuan dan teknologi, serta penanaman nilai-nilai Islami kepada seluruh siswa.
+        </p>
+        <p>
+            Dengan tenaga pengajar yang kompeten dan fasilitas yang terus berkembang, kami siap mencetak lulusan yang siap kerja dan mampu bersaing di era digital.
+        </p>
+    </div>
+
+    <div class="content" id="program-studi">
+        <h2>Program Studi</h2>
+        <div class="program-list">
+            <div class="program" data-aos="zoom-in">
+                <img src="rpl.jpg" alt="Rekayasa Perangkat Lunak">
+                <h3>Rekayasa Perangkat Lunak</h3>
+                <p>
+                    Belajar membuat dan mengembangkan aplikasi dan perangkat lunak.
+                </p>
+            </div>
+            <div class="program" data-aos="zoom-in" data-aos-delay="150">
+                <img src="tkj.jpg" alt="Teknik Komputer dan Jaringan">
+                <h3>Teknik Komputer dan Jaringan</h3>
+                <p>
+                    Memahami instalasi, konfigurasi, dan perawatan jaringan komputer.
+                </p>
+            </div>
+            <div class="program" data-aos="zoom-in">
+                <img src="mm.jpg" alt="Multimedia" />
+                <h3>Multimedia</h3>
+                <p>
+                    Desain grafis, animasi, editing video dan konten kreatif digital.
+                </p>
+            </div>
+            <div class="program" data-aos="zoom-in">
+                <img src="otkp.jpg" alt="Otomatisasi dan Tata Kelola Perkantoran" />
+                <h3>Otomatisasi dan Tata Kelola Perkantoran (OTKP)</h3>
+                <p>
+                    Strategi pemasaran online, e-commerce, dan kewirausahaan digital.
+                </p>
+            </div>
+            <div class="program" data-aos="zoom-in">
+                <img src="pkm.jpg" alt="Perbankan dan Keuangan Mikro" />
+                <h3>Perbankan dan Keuangan Mikro (PKM)</h3>
+                <p>
+                    Program studi yang fokus pada pengelolaan keuangan, perbankan, dan lembaga keuangan mikro.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian Ekstrakurikuler -->
+    <div class="content" id="ekstrakurikuler" data-aos="fade-left">
+        <h2>Ekstrakurikuler</h2>
+        <div class="extracurricular-list">
+
+            <!-- Pramuka -->
+            <div class="extracurricular" data-aos="zoom-in" data-aos-delay="100">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="#25D366" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2a10 10 0 1 0 .001 20.001A10 10 0 0 0 12 2zm3 11.5l-6 2.5 2.5-6 6-2.5-2.5 6z" />
+                </svg>
+                <h3>Pramuka</h3>
+                <p>
+                    Pengembangan karakter, kepemimpinan, dan keterampilan hidup.
+                </p>
+            </div>
+
+            <!-- Futsal -->
+            <div class="extracurricular" data-aos="zoom-in" data-aos-delay="200">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="#ff9800" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2a10 10 0 1 0 0 20A10 10 0 0 0 12 2zm2.2 14.5l-2.2-1.5-2.2 1.5.8-2.5-2-1.5h2.5l.9-2.5.9 2.5H16l-2 1.5.8 2.5z" />
+                </svg>
+                <h3>Futsal</h3>
+                <p>
+                    Latihan fisik dan kerja sama tim dalam olahraga futsal.
+                </p>
+            </div>
+
+            <!-- PMR -->
+            <div class="extracurricular" data-aos="zoom-in" data-aos-delay="300">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="#e53935" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M19 13h-4v4h-6v-4H5v-6h4V5h6v4h4v6z" />
+                </svg>
+                <h3>PMR (Palang Merah Remaja)</h3>
+                <p>
+                    Meningkatkan kepedulian dan pengetahuan tentang dunia medis.
+                </p>
+            </div>
+
+            <!-- Paskibra -->
+            <div class="extracurricular" data-aos="zoom-in" data-aos-delay="400">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="#1976d2" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 2h2v20H4V2zm4 2h10v6H8V4zm0 8h10v6H8v-6z" />
+                </svg>
+                <h3>Paskibra</h3>
+                <p>
+                    Berlatih baris berbaris atau PBB.
+                </p>
+            </div>
+
+            <!-- Seni Tari -->
+            <div class="extracurricular" data-aos="zoom-in" data-aos-delay="600">
+                <svg width="60" height="60" viewBox="0 0 24 24" fill="#9c27b0" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 4a2 2 0 1 1 0 4 2 2 0 0 1 0-4zm-1 6h2l1 5h4l-5 5-2-4-3 3-1-1 4-4h-3l3-4z" />
+                </svg>
+                <h3>Seni Tari</h3>
+                <p>
+                    Belajar seni tari tradisional dan modern.
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Form Pendaftaran -->
+    <div class="content" id="form-daftar" data-aos="fade-up">
+        <h2>Form Pendaftaran</h2>
+        <form id="formPendaftaran" onsubmit="return validasiForm()">
+            <input type="text" id="nama" placeholder="Nama Lengkap" required />
+            <input type="text" id="nisn" placeholder="NISN" required />
+            <input type="email" id="email" placeholder="Email" required />
+            <input type="tel" id="telp" placeholder="Nomor Telepon" required />
+            <input type="date" id="tglLahir" required />
+            <select id="jenisKelamin"required>
+                <option value=""disabled selected>Pilih Jenis Kelamin</option>
+                <option value="Laki-Laki">Laki-Laki</option>
+                <option value="Perempuan">Perempuan</option>
+            </select>
+            <select id="program" required>
+                <option value="" disabled selected>Pilih Program Studi</option>
+                <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                <option value="Teknik Komputer dan Jaringan">Teknik Komputer dan Jaringan</option>
+                <option value="Multimedia">Multimedia</option>
+                <option value="Otomatisasi Tata Kelola Perkantoran">Otomatisasi Tata Kelola Perkantoran</option>
+                <option value="Perbankan dan Keuangan Mikro">Perbankan dan Keuangan Mikro</option>
+            </select>
+            <button type="submit" class="cta-button">Daftar</button>
+        </form>
+        <div id="struk"></div>
+    </div>
+
+    <div class="contact-info" id="kontak" data-aos="fade-up">
+        <h2>Kontak Kami</h2>
+        <p>
+            Alamat: Jl.Re.Abdullah No.1,RT.02/RW.01, Pasir Jaya, Bogor Barat
+        </p>
+        <p>
+            Email: <a href="mailto:smkbifor@gmail.com">smkbinainformatika@gmail.com</a>
+        </p>
+        <p>
+            Telepon: <a href="tel:+6289617354862">+62 896-1735-4862</a>
+        </p>
+    </div>
+
+    <div class="content" id="lokasi" data-aos="fade-up">
+        <h2>Lokasi Sekolah</h2>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.3375518595976!2d106.768786!3d-6.5894822999999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5b2b62c63c5%3A0xaaa001c8a60dcb3!2sJl.%20RE.%20Abdullah%20No.1%2C%20Pasir%20Jaya%2C%20Kec.%20Bogor%20Barat%2C%20Kota%20Bogor%2C%20Jawa%20Barat%2016154!5e0!3m2!1sid!2sid!4v1715000000000!5m2!1sid!2sid" width="100%" height="300" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+    </div>
+
+    <footer>
+        <p>
+            Copyright © 2025 Alliefta XI RPL
+        </p>
+        <p>
+            <a href="https://www.instagram.com/smkbinainformatika?igsh=MW92eTZpcGp3NGJ6MA==" target="_blank" rel="noopener">Intagram</a>
+        </p>
+    </footer>
+
+    <!-- AOS Animation Script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init();
+
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            backToTop.style.display = window.pageYOffset > 300 ? 'block': 'none';
+        });
+
+        function validasiForm() {
+            const nama = document.getElementById('nama').value.trim();
+            const nisn = document.getElementById('nisn').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const telp = document.getElementById('telp').value.trim();
+            const tglLahir = document.getElementById('tglLahir').value.trim();
+            const jenisKelamin = document.getElementById('jenisKelamin').value;
+            const program = document.getElementById('program').value;
+
+            if (!nama || !nisn || !email || !telp || !tglLahir || !jenisKelamin || !program) {
+                alert('Semua bidang harus diisi!');
+                return false;
+            }
+
+            const struk = document.getElementById('struk');
+            struk.innerHTML = `
+            <h3>Struk Pendaftaran</h3>
+            <p><strong>Nama:</strong> ${nama}</p>
+            <p><strong>NISN:</strong> ${nisn}</p>
+            <p><strong>Email:</strong> ${email}</p>
+            <p><strong>Telepon:</strong> ${telp}</p>
+            <p><strong>Tanggal Lahir:</strong> ${tglLahir}</p>
+            <p><strong>Jenis Kelamin:</strong> ${jenisKelamin}</p>
+            <p><strong>Program Studi:</strong> ${program}</p>
+            <p>Terima kasih sudah mendaftar di SMK Bina Informatika!</p>
+            `;
+            struk.classList.add('show');
+            window.scrollTo({
+                top: struk.offsetTop, behavior: 'smooth'
+            });
+
+            // Format pesan WhatsApp
+            const pesan = `Halo, saya ingin mendapatkan informasi lebih lanjut tentang pendaftaran di SMK Bina Informatika.%0A%0A*Data Saya:*%0A- Nama: ${nama}%0A- NISN: ${nisn}%0A- Email: ${email}%0A- Telepon: ${telp}%0A- Tanggal Lahir: ${tglLahir}%0A- Jenis Kelamin: ${jenisKelamin}%0A- Program Studi: ${program}`;
+
+            // Ganti nomor di bawah sesuai nomor WhatsApp sekolah
+            const nomorWA = '6289617354862';
+            const urlWA = `https://wa.me/${nomorWA}?text=${pesan}`;
+
+            setTimeout(() => {
+                window.open(urlWA, '_blank');
+            }, 1000);
+
+            return false;
+        }
+    </script>
+</body>
+</html>
